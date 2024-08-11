@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Form</title>
+    <style>
+        body {
+            background-color:lavender;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 150px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+        .container.dark-mode {
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        input[type="submit"].dark-mode {
+            background-color: #1a1a1a;
+        }
+        input[type="submit"].dark-mode:hover {
+            background-color: #333;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-btn.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1 align = 'center'>Sentiment Analysis</h1>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
+
+    <div class="container">
+        <h1>Write a Review</h1>
+        <form action="/output" method = 'post'>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="review">Your Review:</label>
+            <textarea id="review" name="review" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        const body = document.body;
+        const container = document.querySelector('.container');
+        const submitBtn = document.querySelector('input[type="submit"]');
+        const toggleBtn = document.querySelector('.toggle-btn');
+        
+        // Toggle between light and dark mode
+        function toggleDarkMode() {
+            body.classList.toggle('dark-mode');
+            container.classList.toggle('dark-mode');
+            submitBtn.classList.toggle('dark-mode');
+            toggleBtn.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
